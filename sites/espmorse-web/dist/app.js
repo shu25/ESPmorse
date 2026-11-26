@@ -22,4 +22,4 @@ send.addEventListener('click',async()=>{const s=message.value.trim().toUpperCase
 history.addEventListener('click',()=>{clearChat();toast('表示を消去しました')});
 refresh.addEventListener('click',()=>readStatus().catch(e=>toast(e.message)));
 save.addEventListener('click',async()=>{try{for(const el of document.querySelectorAll('[data-command]')){await write(`${el.dataset.command}=${el.type==='checkbox'?(el.checked?1:0):el.value}`);await new Promise(r=>setTimeout(r,90))}toast('設定を保存しました')}catch(e){toast(e.message)}});
-$('#support').textContent=navigator.bluetooth?'Brave / Chrome / Edge対応':'Web Bluetooth対応ブラウザで開いてください';if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js');setConnected(false);
+$('#support').textContent=navigator.bluetooth?'Brave / Chrome / Edge対応':'Web Bluetooth対応ブラウザで開いてください';if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});setConnected(false);
